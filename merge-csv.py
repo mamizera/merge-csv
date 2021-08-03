@@ -3,7 +3,7 @@ from pathlib import Path
 
 #-----ścieżka do plików-----
 path = str(Path(__file__).parent.absolute())    #jeśli pliki w tym samym folderze co skrypt
-#path = ""   #jeśli nie,, podajemy ścieżke do plików
+#path = ""   #jeśli nie, podajemy ścieżke do plików
 
 filename1 = path + "\\file1.csv"
 filename2 = path + "\\file2.csv"
@@ -20,14 +20,16 @@ data2 = pd.read_csv(filename2)
 print("merging...")
 join_type = "inner"
 
-#jeśli klucz ta sama nazwa
+#klucz ta sama nazwa
 key = "ID"
+#key = ["attr1","attr2"] #jeśli po więcej niż 1 kluczu
 out = pd.merge(data1, data2, on=key, how=join_type)
 
-#jeśli inna nazwa kluczy
+#inna nazwa kluczy
 # key1 = "ID"
 # key2 = "ID2"
 # out = pd.merge(data1, data2, left_on = key1, right_on=key2, how=join_type)
+# jeszcze pasuje zrzucic kolumnę z nadmiarowym kluczem
 
 
 #-------zapis do wynikowego csv-----------
